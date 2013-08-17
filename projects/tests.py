@@ -12,13 +12,6 @@ from django.test import TestCase
 from projects.models import Project
 
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.assertEqual(1 + 1, 2)
-
 class ProjectMethodTests(TestCase):
     
     def test_is_ending_soon_with_completed_project(self):
@@ -31,3 +24,7 @@ class ProjectMethodTests(TestCase):
         self.assertEqual(completed_project.is_ending_soon(), False,
                          "It seems to think a completed project is ending soon...")
         
+        
+class BlogMethodTests(TestCase):
+    
+    
