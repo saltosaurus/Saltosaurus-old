@@ -4,6 +4,7 @@ import datetime
 
 # A blog entry
 class BlogEntry(models.Model):
+    blog_id = models.IntegerField()
     title = models.CharField(max_length = 100)
     contents = models.CharField(max_length = 5000)
     pub_date = models.DateTimeField('Written: ')
@@ -21,6 +22,7 @@ class BlogEntry(models.Model):
 
 # A comment on a blog
 class Comment(models.Model):
+    comment_id = models.IntegerField()
     blogentry = models.ForeignKey(BlogEntry)
     contents = models.CharField(max_length = 250)
     author = models.CharField(max_length = 50)
