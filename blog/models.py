@@ -24,6 +24,7 @@ class Comment(models.Model):
     blogentry = models.ForeignKey(BlogEntry)
     contents = models.CharField(max_length = 250)
     author = models.CharField(max_length = 50)
+    pub_date = models.DateTimeField("Comment left at: ")
     
     # If viewed as an object, show author of comment
     def __unicode__(self):
