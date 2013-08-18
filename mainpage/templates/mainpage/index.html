@@ -1,0 +1,34 @@
+Latest blog entries:
+{% if latest_blog_entry_list %}
+	<ul>
+	{% for entry in latest_blog_entry_list %}
+		<li><a href="/blog/{{entry.blog_id}}/">{{entry.title}}</a>
+			{% if comments_list %}
+				<ul>
+				{% for comment in comments_list %}
+					{% if comment.blogentry == entry %}
+						<li><a href="/{{entry.blog_id}}/{{comment.comment_id}}/">{{comment.contents}}</a></li>
+					{% endif %}
+				{% endfor %}
+				</ul>
+			{% else %}
+				<p>No current comments for this entry.</p>
+			{% endif %}
+		</li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>No blog entries are available.</p>
+{% endif %}
+
+
+Projects with deadlines on the horizon:
+{% if latest_project_list %}
+	<ul>
+	{% for project in latest_project_list %}
+		<li><a href="/projects/{{project.project_name}}/">{{project.project_name}}</a></li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>No projects looming...</p>
+{% endif %}
