@@ -1,0 +1,23 @@
+<h1>My ramblings...</h1>
+
+{% if latest_blog_entry_list %}
+	<ul>
+	{% for entry in latest_blog_entry_list %}
+		<h3>{{entry.title}}</h3>
+		<p>{{entry.contents}}</p>
+		{% if comments_list %}
+			<ul>
+			{% for comment in comments_list %}
+				{% if comment.blogentry == entry %}
+					<li><a href="/blog/{{entry.blog_id}}/{{comment.comment_id}}/">{{comment.contents}}</a></li>
+				{% endif %}
+			{% endfor %}
+			</ul>
+		{% else %}
+			<p>No current comments for this entry.</p>
+		{% endif %}
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>No blog entries are available.</p>
+{% endif %}
