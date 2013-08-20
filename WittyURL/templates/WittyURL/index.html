@@ -2,12 +2,12 @@ Latest blog entries:
 {% if latest_blog_entry_list %}
 	<ul>
 	{% for entry in latest_blog_entry_list %}
-		<li><a href="/blog/{{entry.blog_id}}/">{{entry.title}}</a>
+		<li><a href="/blog/{{entry.id}}/">{{entry.title}}</a>
 			{% if comments_list %}
 				<ul>
 				{% for comment in comments_list %}
 					{% if comment.blogentry == entry %}
-						<li><a href="/blog/{{entry.blog_id}}/{{comment.comment_id}}/">{{comment.contents}}</a></li>
+						<li><a href="/blog/{{entry.id}}/{{comment.id}}/">{{comment.contents}}</a></li>
 					{% endif %}
 				{% endfor %}
 				</ul>
