@@ -6,7 +6,7 @@ from projects.models import Project
 
 def index(request):
     latest_blog_entry_list = BlogEntry.objects.order_by('-pub_date')[:5]
-    comments_list = Comment.objects.order_by('comment_id') # Linear search is gross
+    comments_list = Comment.objects.order_by('id') # Linear search is gross
     latest_project_list = Project.objects.order_by('is_completed','end_date')[:5]
     
     context = {
