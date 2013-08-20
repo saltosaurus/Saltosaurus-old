@@ -4,12 +4,12 @@
 {% if latest_project_list %}
 	<ul>
 	{% for project in latest_project_list %}
-		<li><a href="{% url 'projects:project' project.id %}">{{project.project_name}}</a>
+		<li><a href="{% url 'projects:project' project.id %}">{{project.name}}</a>
 			{% if milestone_list %}
 				<ul>
 				{% for milestone in milestone_list %}
 					{% if milestone.project == project %}
-						<li><a href="{% url 'projects:milestone' project.id milestone.id %}">{{milestone.milestone_name}}</a></li>
+						<li><a href="{% url 'projects:milestone' project.id milestone.id %}">{{milestone.name}}</a></li>
 					{% endif %}
 				{% endfor %}
 				</ul>

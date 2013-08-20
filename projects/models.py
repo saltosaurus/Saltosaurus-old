@@ -4,16 +4,16 @@ import datetime
 
 # A project model to keep track of all the projects I'm working on
 class Project(models.Model):
-    project_name = models.CharField(max_length = 200)
+    name = models.CharField(max_length = 200)
     description = models.CharField(max_length = 500)
     start_date = models.DateField('Start Date: ')
     end_date = models.DateField('(Expected) Completion Date: ')
-    project_url = models.URLField(blank = True) # This may be black since some repos are private
+    url = models.URLField(blank = True) # This may be black since some repos are private
     is_completed = models.BooleanField() # To keep track of if the project is completed or not and should be treated accordingly
     
     # This makes sure if it is viewed as an object we see the project name
     def __unicode__(self):
-        return self.project_name
+        return self.name
     
     # This is used to organize the admin screen
     def was_completed(self):
@@ -37,10 +37,10 @@ class Project(models.Model):
 # Every project has a set of milestones indicating progress on the project
 class Milestone(models.Model):
     project = models.ForeignKey(Project)
-    milestone_name = models.CharField(max_length = 200)
-    milestone_desc = models.CharField(max_length = 500)
-    milestone_date = models.DateTimeField('Accomplished:')
+    name = models.CharField(max_length = 200)
+    description = models.CharField(max_length = 500)
+    accomplish_date = models.DateTimeField('Accomplished:')
     
     # This makes sure if it is viewed as an object we see the milestone name
     def __unicode__(self):
-        return self.milestone_name
+        return self.name

@@ -9,8 +9,7 @@ urlpatterns = patterns('',
     url(r'^projects', include('projects.urls', namespace="projects")),
     url(r'^blog', include('blog.urls', namespace="blog")),
     # ex: witty-url.com/
-    url(r'/?$', views.index, name='index'),
+    url(r'^/?$', views.index, name='index'),
     # ex: witty-url.com/index.html
-    url(r'/index.html$', views.index, name='index'),
-    
+    url(r'^/index.html$', views.index, name='index'),
 )

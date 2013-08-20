@@ -5,7 +5,7 @@ from projects.models import Milestone
 
 def index(request):
     latest_project_list = Project.objects.order_by('end_date')
-    milestone_list = Milestone.objects.order_by('milestone_date')
+    milestone_list = Milestone.objects.order_by('accomplish_date')
     context = {
                'latest_project_list': latest_project_list,
                'milestone_list': milestone_list
