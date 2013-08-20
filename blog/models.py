@@ -4,7 +4,6 @@ import datetime
 
 # A blog entry
 class BlogEntry(models.Model):
-    blog_id = models.IntegerField()
     title = models.CharField(max_length = 100)
     contents = models.CharField(max_length = 5000)
     pub_date = models.DateTimeField('Written: ')
@@ -22,7 +21,6 @@ class BlogEntry(models.Model):
 
 # A comment on a blog
 class Comment(models.Model):
-    comment_id = models.IntegerField()
     blogentry = models.ForeignKey(BlogEntry)
     contents = models.CharField(max_length = 250)
     author = models.CharField(max_length = 50)
@@ -32,4 +30,9 @@ class Comment(models.Model):
     def __unicode__(self):
         return self.author
     
-    
+    # init for a new comment on a blog entry
+    def add_content(self, entry, content, author="Anonymous"):
+        self.blogentry = entry
+        self.contents = content
+        self.author = author
+        self.pub_date = timezone.now()

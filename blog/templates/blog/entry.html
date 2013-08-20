@@ -3,7 +3,13 @@
 {% if latest_comment_list %}
 	<ul>
 	{% for comment in latest_comment_list %}
-		<li><a href="/blog/{{blog_entry.blog_id}}/{{comment.comment_id}}/">{{comment.contents}}</a></li>
+		<li><a href="{% url 'blog:comment' blog_entry.id comment.id %}">{{comment.contents}}</a></li>
 	{% endfor %}
 	</ul>
 {% endif %}
+<h5>Have something new to add?</h5>
+<form action="{% url 'blog:new_comment' blog_entry.id %}" method="post">
+{% csrf_token %}
+<input type="text" name="comment" />
+<input type="submit" value="Submit" />
+</form>

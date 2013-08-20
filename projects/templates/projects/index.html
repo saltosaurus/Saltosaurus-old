@@ -1,12 +1,12 @@
 {% if latest_project_list %}
 	<ul>
 	{% for project in latest_project_list %}
-		<li><a href="/projects/{{project.project_name}}/">{{project.project_name}}</a>
+		<li><a href="{% url 'projects:project' project.project_name %}">{{project.project_name}}</a>
 			{% if milestone_list %}
 				<ul>
 				{% for milestone in milestone_list %}
 					{% if milestone.project == project %}
-						<li><a href="/{{project.project_name}}/{{milestone.milestone_name}}">{{milestone.milestone_name}}</a></li>
+						<li><a href="{% url 'projects:milestone' project.project_name milestone.milestone_name %}">{{milestone.milestone_name}}</a></li>
 					{% endif %}
 				{% endfor %}
 				</ul>
