@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, HttpResponse
+from django.shortcuts import render, get_object_or_404
 
 from projects.models import Project
 from projects.models import Milestone
@@ -14,13 +14,19 @@ def index(request):
 
 def project(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
-    return HttpResponse("You're looking at %s." % project.project_name)
+    milestone_list = Milestone.objects.filter(project=project)
+    context = {
+               'project': project,
+               'milestone_list': milestone_list
+               }          
+    return render(request, 'projects/project.html', context)
 
 def milestone(request, project_id, milestone_id):
-    milestone = get_object_or_404(Milestone, pk=milestone_id)
     project = get_object_or_404(Project, pk=project_id)
-    response = HttpResponse()
-    response.write("You're looking at %s from project." % milestone.milestone_name)
-    response.write("This came from project %s." % project.project_name)
-    return response
+    milestone = get_object_or_404(Milestone, pk=milestone_id)
+    context = {
+               'project': project,
+               'milestone': milestone
+               }
+    return render(request, 'projects/milestone.html', context)
 
