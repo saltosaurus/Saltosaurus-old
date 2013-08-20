@@ -20,7 +20,7 @@ class ProjectMethodTests(TestCase):
         is_ending_soon() should return False in cases where it has already ended.
         """
         completed_project = Project(end_date = timezone.now() - datetime.timedelta(days=1),
-                                    completedp = True)
+                                    is_completed = True)
         self.assertEqual(completed_project.is_ending_soon(), False,
                          "It seems to think a completed project is ending soon...")
         
@@ -42,18 +42,18 @@ class ProjectMethodTests(TestCase):
         
     def test_is_completed_when_completed(self):
         """
-        is_completed() should return True if the project in question has been flagged as completed.
+        was_completed() should return True if the project in question has been flagged as completed.
         """
-        completed_project = Project(completedp = True)
-        self.assertEqual(completed_project.is_completed(), True,
-                         "Completedp was just a suggestion, right?")
+        completed_project = Project(is_completed = True)
+        self.assertEqual(completed_project.was_completed(), True,
+                         "is_completed was just a suggestion, right?")
         
     def test_is_completed_when_not_completed(self):
         """
-        is_completed() should return False if the project in question has not been flagged as completed.
+        was_completed() should return False if the project in question has not been flagged as completed.
         """
-        completed_project = Project(completedp = False)
-        self.assertEqual(completed_project.is_completed(), False,
+        completed_project = Project(is_completed = False)
+        self.assertEqual(completed_project.was_completed(), False,
                          "Are you done?  You look done.  Yeah, you're done.")
         
     def test_complete_project_when_already_completed(self):
@@ -61,22 +61,22 @@ class ProjectMethodTests(TestCase):
         complete_project() should do nothing if the project in question has already been completed.
         """
         old_end_date = timezone.now() - datetime.timedelta(days=1)
-        completed_project = Project(end_date = old_end_date, completedp = True)
+        completed_project = Project(end_date = old_end_date, is_completed = True)
         completed_project.complete_project()
         self.assertEqual(completed_project.end_date, old_end_date,
                          "Completing already finished projects is most effective!")
         
     def test_complete_project_when_not_already_completed(self):
         """
-        complete_project() should update end_date and set completedp flag if the project hasn't already been completed.
+        complete_project() should update end_date and set is_completed flag if the project hasn't already been completed.
         """
         project = Project()
         self.assertEqual(project.end_date, None)
-        self.assertEqual(project.completedp, False)
+        self.assertEqual(project.is_completed, False)
         project.complete_project()
         self.assertNotEqual(project.end_date, None,
                          "This is the project that never ends, yes it goes on and on my friends...")
-        self.assertEqual(project.completedp, True, 
+        self.assertEqual(project.is_completed, True, 
                         "It seems we've ended but not completed.  We must have just given up...")
     
 class ProjectViewTests(TestCase):

@@ -9,29 +9,29 @@ class Project(models.Model):
     start_date = models.DateField('Start Date: ')
     end_date = models.DateField('(Expected) Completion Date: ')
     project_url = models.URLField(blank = True) # This may be black since some repos are private
-    completedp = models.BooleanField() # To keep track of if the project is completed or not and should be treated accordingly
+    is_completed = models.BooleanField() # To keep track of if the project is completed or not and should be treated accordingly
     
     # This makes sure if it is viewed as an object we see the project name
     def __unicode__(self):
         return self.project_name
     
     # This is used to organize the admin screen
-    def is_completed(self):
-        return self.completedp
-    is_completed.admin_order_field = 'end_date'
-    is_completed.boolean = True
-    is_completed.short_description = 'Has the project been completed yet?'
+    def was_completed(self):
+        return self.is_completed
+    was_completed.admin_order_field = 'end_date'
+    was_completed.boolean = True
+    was_completed.short_description = 'Has the project been completed yet?'
     
     # Returns True if the project is ending with a week
     # Meant to be used as a filter
     def is_ending_soon(self):
-        return self.end_date <= timezone.now() + datetime.timedelta(days=7) and not self.completedp
+        return self.end_date <= timezone.now() + datetime.timedelta(days=7) and not self.is_completed
     
     # This is called to set a project as completed
     def complete_project(self):
-        if not self.completedp:
+        if not self.is_completed:
             self.end_date = timezone.now()
-            self.completedp = True
+            self.is_completed = True
             
     
 # Every project has a set of milestones indicating progress on the project
