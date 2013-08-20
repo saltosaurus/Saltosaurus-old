@@ -1,3 +1,6 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}" />
+
 <h1>My ramblings...</h1>
 
 {% if latest_blog_entry_list %}
@@ -21,3 +24,4 @@
 {% else %}
 	<p>No blog entries are available.</p>
 {% endif %}
+
