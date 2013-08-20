@@ -12,14 +12,15 @@ def index(request):
                }
     return render(request, 'projects/index.html', context)
 
-def project(request, project_name):
-    project = get_object_or_404(Project, pk=project_name)
-    return HttpResponse("You're looking at %s." % project_name)
+def project(request, project_id):
+    project = get_object_or_404(Project, pk=project_id)
+    return HttpResponse("You're looking at %s." % project.project_name)
 
-def milestone(request, project_name, milestone_name):
-    milestone = get_object_or_404(Milestone, pk=milestone_name)
+def milestone(request, project_id, milestone_id):
+    milestone = get_object_or_404(Milestone, pk=milestone_id)
+    project = get_object_or_404(Project, pk=project_id)
     response = HttpResponse()
-    response.write("You're looking at %s from project." % milestone_name)
-    response.write("This came from project %s." % project_name)
+    response.write("You're looking at %s from project." % milestone.milestone_name)
+    response.write("This came from project %s." % project.project_name)
     return response
 
