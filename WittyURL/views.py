@@ -14,4 +14,4 @@ def index(request):
                'comments_list': comments_list,
                'latest_project_list': latest_project_list            
                }
-    return render(request, 'mainpage/index.html', context)
+    return render(request, 'WittyURL/index.html', context)
