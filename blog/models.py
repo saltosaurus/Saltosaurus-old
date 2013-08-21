@@ -5,8 +5,8 @@ import datetime
 # A blog entry
 class Article(models.Model):
     title = models.CharField(max_length = 100)
-    contents = models.CharField(max_length = 5000)
-    pub_date = models.DateTimeField('Written: ')
+    contents = models.TextField(max_length = 5000)
+    pub_date = models.DateTimeField("Published", default = timezone.now())
     
     # Make sure if we view it as an object we get the blog title
     def __unicode__(self):
@@ -22,9 +22,9 @@ class Article(models.Model):
 # A comment on a blog
 class Comment(models.Model):
     blogentry = models.ForeignKey(Article)
-    contents = models.CharField(max_length = 250)
+    contents = models.TextField(max_length = 250)
     author = models.CharField(max_length = 50)
-    pub_date = models.DateTimeField("Comment left at")
+    pub_date = models.DateTimeField("Comment left at", default = timezone.now())
     
     # If viewed as an object, show author of comment
     def __unicode__(self):
