@@ -5,11 +5,11 @@ import datetime
 # A project model to keep track of all the projects I'm working on
 class Project(models.Model):
     name = models.CharField(max_length = 200)
-    description = models.CharField(max_length = 500)
-    start_date = models.DateField('Start Date: ')
-    end_date = models.DateField('(Expected) Completion Date: ')
-    url = models.URLField(blank = True) # This may be black since some repos are private
-    is_completed = models.BooleanField() # To keep track of if the project is completed or not and should be treated accordingly
+    description = models.TextField(max_length = 500)
+    start_date = models.DateField('Start Date', default = timezone.now())
+    end_date = models.DateField('End Date', default = timezone.now() + datetime.timedelta(days=7))
+    url = models.URLField("Web location", blank = True) # This may be black since some repos are private
+    is_completed = models.BooleanField("Completed?") # To keep track of if the project is completed or not and should be treated accordingly
     
     # This makes sure if it is viewed as an object we see the project name
     def __unicode__(self):
@@ -38,8 +38,8 @@ class Project(models.Model):
 class Milestone(models.Model):
     project = models.ForeignKey(Project)
     name = models.CharField(max_length = 200)
-    description = models.CharField(max_length = 500)
-    accomplish_date = models.DateTimeField('Accomplished:')
+    description = models.TextField(max_length = 500)
+    accomplish_date = models.DateField('Accomplished')
     
     # This makes sure if it is viewed as an object we see the milestone name
     def __unicode__(self):

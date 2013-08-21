@@ -4,12 +4,11 @@ from projects.models import Milestone
 
 class ProjectAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,              {'fields': ['name', 'description']}),
-        ('Date Information',{'fields': ['start_date', 'end_date'], 'classes': ['collapse']}),
-        ('Location',        {'fields': ['url']})
-    ]
+                 (None,  { 'fields': ('name', 'url', 'description') }), 
+                 ('Timeframe', { 'fields': ('start_date', 'end_date') }),
+                ]
     list_display = ('name', 'url', 'is_completed')
-    list_filter = ['start_date']
+    list_filter = ['start_date', 'end_date', 'is_completed']
     search_fields = ['name', 'description']
     date_hierarchy = 'end_date'
 
