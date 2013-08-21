@@ -1,5 +1,12 @@
 from django.contrib import admin
 from blog.models import Article, Comment
+from django.contrib import admin
+from django.contrib.auth.models import Group, User
+from django.contrib.sites.models import Site
+
+admin.site.unregister(Group)
+admin.site.unregister(User)
+admin.site.unregister(Site)
 
 class ArticleAdmin(admin.ModelAdmin):
     fieldsets = [
@@ -12,8 +19,8 @@ class ArticleAdmin(admin.ModelAdmin):
     date_hierarchy = 'pub_date'
     
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('blogentry', 'author', 'pub_date')
-    list_filter = ['blogentry', 'pub_date']
+    list_display = ('article', 'author', 'pub_date')
+    list_filter = ['article', 'pub_date']
     search_fields = ['author', 'contents']
     date_hierarchy = 'pub_date'
     

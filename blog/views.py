@@ -34,5 +34,5 @@ def new_comment(request, blog_id):
     nc = Comment()
     nc.add_content(entry, content)
     nc.save()
-    return HttpResponseRedirect(reverse('blog:entry', args=(blog_id)))
+    return HttpResponseRedirect(reverse('blog:article', args=(blog_id)))
     

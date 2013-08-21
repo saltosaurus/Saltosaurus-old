@@ -21,7 +21,7 @@ class Article(models.Model):
 
 # A comment on a blog
 class Comment(models.Model):
-    blogentry = models.ForeignKey(Article)
+    article = models.ForeignKey(Article)
     contents = models.TextField(max_length = 250)
     author = models.CharField(max_length = 50)
     pub_date = models.DateTimeField("Comment left at", default = timezone.now())
