@@ -3,7 +3,7 @@ from django.utils import timezone
 import datetime
 
 # A blog entry
-class BlogEntry(models.Model):
+class Article(models.Model):
     title = models.CharField(max_length = 100)
     contents = models.CharField(max_length = 5000)
     pub_date = models.DateTimeField('Written: ')
@@ -21,10 +21,10 @@ class BlogEntry(models.Model):
 
 # A comment on a blog
 class Comment(models.Model):
-    blogentry = models.ForeignKey(BlogEntry)
+    blogentry = models.ForeignKey(Article)
     contents = models.CharField(max_length = 250)
     author = models.CharField(max_length = 50)
-    pub_date = models.DateTimeField("Comment left at: ")
+    pub_date = models.DateTimeField("Comment left at")
     
     # If viewed as an object, show author of comment
     def __unicode__(self):

@@ -2,10 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
-from blog.models import BlogEntry, Comment
+from blog.models import Article, Comment
 
 def index(request):
-    latest_blog_entry_list = BlogEntry.objects.order_by('-pub_date')[:10]
+    latest_blog_entry_list = Article.objects.order_by('-pub_date')[:10]
     comments_list = Comment.objects.order_by('-id') # Linear search is gross
     
     context = {
@@ -15,7 +15,7 @@ def index(request):
     return render(request, 'blog/index.html', context)
 
 def entry(request, blog_id):
-    blog_entry = get_object_or_404(BlogEntry, pk=blog_id)
+    blog_entry = get_object_or_404(Article, pk=blog_id)
     latest_comment_list = Comment.objects.order_by('id')[:5]
     
     context = {
@@ -29,7 +29,7 @@ def comment(request, blog_id, comment_id):
     return render(request, 'blog/comment.html', {'comment':comment})
     
 def new_comment(request, blog_id):
-    entry = get_object_or_404(BlogEntry, pk=blog_id)
+    entry = get_object_or_404(Article, pk=blog_id)
     content = request.POST['comment']
     nc = Comment()
     nc.add_content(entry, content)
