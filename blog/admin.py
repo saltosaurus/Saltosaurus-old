@@ -10,6 +10,15 @@ class ArticleAdmin(admin.ModelAdmin):
     list_filter = ['pub_date']
     search_fields = ['title', 'contents']
     date_hierarchy = 'pub_date'
+    
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('blogentry', 'author', 'pub_date')
+    list_filter = ['blogentry', 'pub_date']
+    search_fields = ['author', 'contents']
+    date_hierarchy = 'pub_date'
+    
+    def has_add_permission(self, request):
+        return False
 
 admin.site.register(Article, ArticleAdmin)
-admin.site.register(Comment)
+admin.site.register(Comment, CommentAdmin)
