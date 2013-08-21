@@ -39,7 +39,7 @@ class Milestone(models.Model):
     project = models.ForeignKey(Project)
     name = models.CharField(max_length = 200)
     description = models.TextField(max_length = 500)
-    accomplish_date = models.DateField('Accomplished')
+    accomplish_date = models.DateField('Accomplished', default = timezone.now())
     
     # This makes sure if it is viewed as an object we see the milestone name
     def __unicode__(self):

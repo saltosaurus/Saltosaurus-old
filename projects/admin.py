@@ -10,6 +10,16 @@ class ProjectAdmin(admin.ModelAdmin):
     list_filter = ['start_date', 'end_date', 'is_completed']
     search_fields = ['name', 'description']
     date_hierarchy = 'end_date'
+    
+class MilestoneAdmin(admin.ModelAdmin):
+    fieldsets = [
+                 (None, { 'fields': ['project', 'name', 'description'] }),
+                 ('Timeframe', { 'fields': ['accomplish_date'], 'classes': ['collapse'] })
+                 ]
+    list_display = ('project', 'name', 'accomplish_date')
+    list_filter = ['accomplish_date']
+    search_fields = ['name', 'description']
+    date_hierarchy = 'accomplish_date'
 
 admin.site.register(Project, ProjectAdmin)
-admin.site.register(Milestone)
+admin.site.register(Milestone, MilestoneAdmin)
