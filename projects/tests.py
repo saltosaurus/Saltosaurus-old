@@ -237,11 +237,12 @@ class ProjectViewTests(TestCase):
         """
         If a project exists, and the milestone exists, display it.
         """
-        create_project_and_milestones("title", 3)
+        project = create_project_and_milestones("title", 3)
+        milestone = Milestone.objects.get(id=1)
         response = self.client.get(reverse('projects:milestone', args=(1, 1)))
         self.assertNotEqual(response.status_code, 404)
         self.assertContains(response, "title")
         self.assertContains(response, "title 0")
-        self.assertQuerysetEqual(response.context['project'], ['<Project: title>'])
-        self.assertQuerysetEqual(response.context['milestone'], ['<Milestone: title 0>'])
+        self.assertEqual(response.context['project'], project)
+        self.assertEqual(response.context['milestone'], milestone)
         
