@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.utils import timezone
 
 from blog.models import Article, Comment
 
@@ -31,8 +32,8 @@ def comment(request, blog_id, comment_id):
 def new_comment(request, blog_id):
     entry = get_object_or_404(Article, pk=blog_id)
     content = request.POST['comment']
-    nc = Comment()
-    nc.add_content(entry, content)
+    author = request.POST['author']
+    nc = Comment(article=entry, contents=content, pub_date=timezone.now(), author=author)
     nc.save()
-    return HttpResponseRedirect(reverse('blog:article', args=(blog_id)))
+    return HttpResponseRedirect(reverse('blog:entry', args=(blog_id)))
     

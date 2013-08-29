@@ -18,6 +18,8 @@ class ArticleAdmin(admin.ModelAdmin):
     date_hierarchy = 'pub_date'
     
 class CommentAdmin(admin.ModelAdmin):
+    fieldsets = [ (None, { 'fields': ['article', 'author', 'pub_date', 'contents'] }) ]
+    readonly_fields = ('article', 'author', 'pub_date')
     list_display = ('article', 'author', 'pub_date')
     list_filter = ['article', 'pub_date']
     search_fields = ['author', 'contents']

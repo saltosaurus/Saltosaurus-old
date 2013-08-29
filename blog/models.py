@@ -32,7 +32,5 @@ class Comment(models.Model):
     
     # init for a new comment on a blog entry
     def add_content(self, entry, content, author="Anonymous"):
-        self.blogentry = entry
-        self.contents = content
         self.author = author
         self.pub_date = timezone.now()
