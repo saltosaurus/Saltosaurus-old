@@ -6,8 +6,8 @@ import datetime
 class Project(models.Model):
     name = models.CharField(max_length = 200)
     description = models.TextField(max_length = 500)
-    start_date = models.DateField('Start Date', default = timezone.now())
-    end_date = models.DateField('End Date', default = timezone.now() + datetime.timedelta(days=7))
+    start_date = models.DateField('Start Date', default = timezone.now().date())
+    end_date = models.DateField('End Date', default = (timezone.now() + datetime.timedelta(days=7)).date())
     url = models.URLField("Web location", blank = True) # This may be black since some repos are private
     is_completed = models.BooleanField("Completed?") # To keep track of if the project is completed or not and should be treated accordingly
     
@@ -30,7 +30,7 @@ class Project(models.Model):
     # This is called to set a project as completed
     def complete_project(self):
         if not self.is_completed:
-            self.end_date = timezone.now()
+            self.end_date = timezone.now().date()
             self.is_completed = True
             
     
@@ -39,7 +39,7 @@ class Milestone(models.Model):
     project = models.ForeignKey(Project)
     name = models.CharField(max_length = 200)
     description = models.TextField(max_length = 500)
-    accomplish_date = models.DateField('Accomplished', default = timezone.now())
+    accomplish_date = models.DateField('Accomplished', default = timezone.now().date())
     
     # This makes sure if it is viewed as an object we see the milestone name
     def __unicode__(self):

@@ -71,11 +71,10 @@ class ProjectMethodTests(TestCase):
         complete_project() should update end_date and set is_completed flag if the project hasn't already been completed.
         """
         project = Project()
-        self.assertEqual(project.end_date, None)
+        self.assertEqual(project.end_date, (timezone.now() + datetime.timedelta(days=7)).date())
         self.assertEqual(project.is_completed, False)
         project.complete_project()
-        self.assertNotEqual(project.end_date, None,
-                         "This is the project that never ends, yes it goes on and on my friends...")
+        self.assertEqual(project.end_date, timezone.now().date())
         self.assertEqual(project.is_completed, True, 
                         "It seems we've ended but not completed.  We must have just given up...")
     
@@ -87,8 +86,8 @@ class ProjectViewTests(TestCase):
         """
         response = self.client.get(reverse('projects:index'))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "I am not currently working on any projects that satisfy the criteria.")
-        self.assertQuerySetEqual(response.context['latest_projects_list'], [])
+        self.assertContains(response, "No projects are available.")
+        self.assertQuerysetEqual(response.context['latest_project_list'], [])
         
     
         
