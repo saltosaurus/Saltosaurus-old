@@ -35,7 +35,7 @@ def create_article_and_comments(title, num_c):
     """
     article = Article.objects.create(name=title)
     for i in range(num_c):
-        Comment.objects.create(name=(title+" "+str(i)), article=article)
+        Comment.objects.create(author=(title+" "+str(i)), article=article)
     return article
 
 class BlogViewTests():
@@ -195,4 +195,3 @@ class BlogViewTests():
         self.assertContains(response, "title 0")
         self.assertEqual(response.context['article'], article)
         self.assertEqual(response.context['comment'], comment)
-        
