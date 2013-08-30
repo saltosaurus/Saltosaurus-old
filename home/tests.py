@@ -9,7 +9,7 @@ from django.core.urlresolvers import reverse
 from django.test import TestCase
 
 from projects.models import Project, Milestone
-from blog.models import Article, Comment
+from articles.models import Article, Comment
 
 def create_project_and_milestones(title, num_ms):
     """
@@ -36,8 +36,8 @@ class indexViewTests(TestCase):
         Verify the static text that should appear on the index page at all times.
         """
         response = self.client.get(reverse('home:index'))
-        self.assertContains(response, "Latest blog entries:")
-        self.assertContains(response, "No blog entries are available.")
+        self.assertContains(response, "Latest article entries:")
+        self.assertContains(response, "No article entries are available.")
         self.assertNotContains(response, "No current comments for this entry.")
         self.assertContains(response, "Projects with deadlines on the horizon:")
         self.assertContains(response, "No projects looming...")
@@ -48,7 +48,7 @@ class indexViewTests(TestCase):
         """
         create_article_and_comments("title", 0)
         response = self.client.get(reverse('home:index'))
-        self.assertNotContains(response, "No blog entries are available.")
+        self.assertNotContains(response, "No article entries are available.")
         self.assertContains(response, "No current comments for this entry.")
         self.assertContains(response, "No projects looming...")
         self.assertQuerysetEqual(response.context['latest_article_list'], ['<Article: title>'])
@@ -61,7 +61,7 @@ class indexViewTests(TestCase):
         """
         create_article_and_comments("title", 2)
         response = self.client.get(reverse('home:index'))
-        self.assertNotContains(response, "No blog entries are available.")
+        self.assertNotContains(response, "No article entries are available.")
         self.assertNotContains(response, "No current comments for this entry.")
         self.assertContains(response, "No projects looming...")
         self.assertQuerysetEqual(response.context['latest_article_list'], ['<Article: title>'])
@@ -74,7 +74,7 @@ class indexViewTests(TestCase):
         """
         create_project_and_milestones("title", 0)
         response = self.client.get(reverse('home:index'))
-        self.assertContains(response, "No blog entries are available.")
+        self.assertContains(response, "No article entries are available.")
         self.assertNotContains(response, "No current comments for this entry.")
         self.assertNotContains(response, "No projects looming...")
         self.assertQuerysetEqual(response.context['latest_article_list'], [])
@@ -88,7 +88,7 @@ class indexViewTests(TestCase):
         create_project_and_milestones("title", 0)
         create_article_and_comments("title", 0)
         response = self.client.get(reverse('home:index'))
-        self.assertNotContains(response, "No blog entries are available.")
+        self.assertNotContains(response, "No article entries are available.")
         self.assertContains(response, "No current comments for this entry.")
         self.assertNotContains(response, "No projects looming...")
         self.assertQuerysetEqual(response.context['latest_article_list'], ['<Article: title>'])
@@ -102,7 +102,7 @@ class indexViewTests(TestCase):
         create_project_and_milestones("title", 0)
         create_article_and_comments("title", 3)
         response = self.client.get(reverse('home:index'))
-        self.assertNotContains(response, "No blog entries are available.")
+        self.assertNotContains(response, "No article entries are available.")
         self.assertNotContains(response, "No current comments for this entry.")
         self.assertNotContains(response, "No projects looming...")
         self.assertQuerysetEqual(response.context['latest_article_list'], ['<Article: title>'])

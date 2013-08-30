@@ -109,7 +109,7 @@ WSGI_APPLICATION = 'WittyURL.wsgi.application'
 
 TEMPLATE_DIRS = (
     '/home/bsalter/workspace/WittyURL/projects/templates',
-    '/home/bsalter/workspace/WittyURL/blog/templates',
+    '/home/bsalter/workspace/WittyURL/articles/templates',
     '/home/bsalter/workspace/WittyURL/home/templates'
 )
 
@@ -122,7 +122,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'projects',
-    'blog',
+    'articles',
     'home',
 )
 

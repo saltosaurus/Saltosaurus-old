@@ -1,7 +1,6 @@
 from django.shortcuts import render
 
-from blog.models import Article
-from blog.models import Comment
+from articles.models import Article, Comment
 from projects.models import Project
 
 def index(request):

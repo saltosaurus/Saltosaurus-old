@@ -2,17 +2,17 @@
 <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}" />
 <script type="text/javascript" src={% static 'blog/script.js' %}></script>
 
-<h1>{{ blog_entry.title }}</h1>
-<p>{{ blog_entry.contents }}</p>
+<h1>{{ article.title }}</h1>
+<p>{{ article.contents }}</p>
 {% if latest_comment_list %}
 	<ul>
 	{% for comment in latest_comment_list %}
-		<li><a href="{% url 'blog:comment' blog_entry.id comment.id %}">{{comment.contents}}</a></li>
+		<li><a href="{% url 'articles:comment' article.id comment.id %}">{{comment.contents}}</a></li>
 	{% endfor %}
 	</ul>
 {% endif %}
 <h5>Have something new to add?</h5>
-<form action="{% url 'blog:new_comment' blog_entry.id %}" method="post">
+<form action="{% url 'articles:new_comment' article.id %}" method="post">
 {% csrf_token %}
 <input type="text" name="author" value="Anonymous" 
 	onfocus="inputFocus(this)" onblur="inputBlur(this)"/>

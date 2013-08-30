@@ -5,23 +5,23 @@ Latest blog entries:
 {% if latest_article_list %}
 	<ul>
 	{% for entry in latest_article_list %}
-		<li><a href="/blog/{{entry.id}}/">{{entry.title}}</a>
+		<li><a href="/articles/{{entry.id}}/">{{entry.title}}</a>
 			{% if comments_list %}
 				<ul>
 				{% for comment in comments_list %}
 					{% if comment.blogentry == entry %}
-						<li><a href="/blog/{{entry.id}}/{{comment.id}}/">{{comment.contents}}</a></li>
+						<li><a href="/articles/{{entry.id}}/{{comment.id}}/">{{comment.contents}}</a></li>
 					{% endif %}
 				{% endfor %}
 				</ul>
 			{% else %}
-				<p>No current comments for this entry.</p>
+				<p>No current comments for this article.</p>
 			{% endif %}
 		</li>
 	{% endfor %}
 	</ul>
 {% else %}
-	<p>No blog entries are available.</p>
+	<p>No articles are available.</p>
 {% endif %}
 
 

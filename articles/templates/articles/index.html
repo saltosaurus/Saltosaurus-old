@@ -5,14 +5,14 @@
 
 {% if latest_article_list %}
 	<ul>
-	{% for entry in latest_blog_entry_list %}
-		<h3>{{entry.title}}</h3>
-		<p>{{entry.contents}}</p>
+	{% for article in latest_article_list %}
+		<h3>{{article.title}}</h3>
+		<p>{{article.contents}}</p>
 		{% if comments_list %}
 			<ul>
 			{% for comment in comments_list %}
-				{% if comment.blogentry == entry %}
-					<li><a href="{% url 'blog:comment' entry.id comment.id %}">{{comment.contents}}</a></li>
+				{% if comment.article == entry %}
+					<li><a href="{% url 'articles:comment' article.id comment.id %}">{{comment.contents}}</a></li>
 				{% endif %}
 			{% endfor %}
 			</ul>
@@ -22,6 +22,6 @@
 	{% endfor %}
 	</ul>
 {% else %}
-	<p>No blog entries are available.</p>
+	<p>No articles are available.</p>
 {% endif %}
 
