@@ -4,9 +4,9 @@
 
 <h1>{{ article.title }}</h1>
 <p>{{ article.contents }}</p>
-{% if latest_comment_list %}
+{% if comments_list %}
 	<ul>
-	{% for comment in latest_comment_list %}
+	{% for comment in comments_list %}
 		<li><a href="{% url 'articles:comment' article.id comment.id %}">{{comment.contents}}</a></li>
 	{% endfor %}
 	</ul>
