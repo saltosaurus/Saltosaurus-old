@@ -24,7 +24,7 @@ def create_article_and_comments(title, num_c):
     """
     Creates both a article and num_ms associated comments.
     """
-    article = Article.objects.create(name=title)
+    article = Article.objects.create(title=title)
     for i in range(num_c):
         Comment.objects.create(author=(title+" "+str(i)), article=article)
     return article
@@ -49,7 +49,7 @@ class indexViewTests(TestCase):
         create_article_and_comments("title", 0)
         response = self.client.get(reverse('home:index'))
         self.assertNotContains(response, "No blog entries are available.")
-        self.assertNotContains(response, "No current comments for this entry.")
+        self.assertContains(response, "No current comments for this entry.")
         self.assertContains(response, "No projects looming...")
         self.assertQuerysetEqual(response.context['latest_article_list'], ['<Article: title>'])
         self.assertQuerysetEqual(response.context['comments_list'], [])
@@ -75,7 +75,7 @@ class indexViewTests(TestCase):
         create_project_and_milestones("title", 0)
         response = self.client.get(reverse('home:index'))
         self.assertContains(response, "No blog entries are available.")
-        self.assertContains(response, "No current comments for this entry.")
+        self.assertNotContains(response, "No current comments for this entry.")
         self.assertNotContains(response, "No projects looming...")
         self.assertQuerysetEqual(response.context['latest_article_list'], [])
         self.assertQuerysetEqual(response.context['comments_list'], [])
