@@ -12,7 +12,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/Users/bsalter/Documents/workspace/WittyURL/sqlite.db',                      # Or path to database file if using sqlite3.
+        'NAME': '/home/bsalter/workspace/WittyURL/sqlite.db',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
@@ -108,9 +108,9 @@ ROOT_URLCONF = 'WittyURL.urls'
 WSGI_APPLICATION = 'WittyURL.wsgi.application'
 
 TEMPLATE_DIRS = (
-    '/Users/bsalter/Documents/workspace/WittyURL/projects/templates',
-    '/Users/bsalter/Documents/workspace/WittyURL/blog/templates',
-    '/Users/bsalter/Documents/workspace/WittyURL/WittyURL/templates'
+    '/home/bsalter/workspace/WittyURL/projects/templates',
+    '/home/bsalter/workspace/WittyURL/blog/templates',
+    '/home/bsalter/workspace/WittyURL/WittyURL/templates'
 )
 
 INSTALLED_APPS = (

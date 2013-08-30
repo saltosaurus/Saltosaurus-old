@@ -30,7 +30,3 @@ class Comment(models.Model):
     def __unicode__(self):
         return self.author
     
-    # init for a new comment on a blog entry
-    def add_content(self, entry, content, author="Anonymous"):
-        self.author = author
-        self.pub_date = timezone.now()

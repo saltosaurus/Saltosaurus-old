@@ -6,11 +6,11 @@ from django.utils import timezone
 from blog.models import Article, Comment
 
 def index(request):
-    latest_blog_entry_list = Article.objects.order_by('-pub_date')[:10]
+    latest_article_list = Article.objects.order_by('-pub_date')[:10]
     comments_list = Comment.objects.order_by('-id') # Linear search is gross
     
     context = {
-               'latest_blog_entry_list': latest_blog_entry_list,
+               'latest_article_list': latest_article_list,
                'comments_list': comments_list,        
                }
     return render(request, 'blog/index.html', context)
