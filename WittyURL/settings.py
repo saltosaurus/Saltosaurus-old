@@ -110,7 +110,7 @@ WSGI_APPLICATION = 'WittyURL.wsgi.application'
 TEMPLATE_DIRS = (
     '/home/bsalter/workspace/WittyURL/projects/templates',
     '/home/bsalter/workspace/WittyURL/blog/templates',
-    '/home/bsalter/workspace/WittyURL/WittyURL/templates'
+    '/home/bsalter/workspace/WittyURL/home/templates'
 )
 
 INSTALLED_APPS = (
@@ -123,6 +123,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'projects',
     'blog',
+    'home',
 )
 
 # A sample logging configuration. The only tangible logging

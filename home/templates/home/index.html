@@ -2,9 +2,9 @@
 <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}" />
 
 Latest blog entries:
-{% if latest_blog_entry_list %}
+{% if latest_article_list %}
 	<ul>
-	{% for entry in latest_blog_entry_list %}
+	{% for entry in latest_article_list %}
 		<li><a href="/blog/{{entry.id}}/">{{entry.title}}</a>
 			{% if comments_list %}
 				<ul>
