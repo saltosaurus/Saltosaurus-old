@@ -35,7 +35,7 @@ def create_article_and_comments(title, num_c):
     """
     article = Article.objects.create(title=title)
     for i in range(num_c):
-        Comment.objects.create(author=(title+" "+str(i)), article=article)
+        Comment.objects.create(author=(title+" "+str(i)), article=article, contents=(title+" "+str(i)))
     return article
 
 class BlogViewTests(TestCase):
@@ -163,6 +163,9 @@ class BlogViewTests(TestCase):
         response = self.client.get(reverse('articles:article', args=(1,)))
         self.assertNotEqual(response.status_code, 404)
         self.assertContains(response, "title")
+        self.assertContains(response, "title 0")
+        self.assertContains(response, "title 1")
+        self.assertContains(response, "title 2")
         self.assertEqual(response.context['article'], article)
         self.assertQuerysetEqual(response.context['comments_list'], 
                                  ['<Comment: title 0>', '<Comment: title 1>', '<Comment: title 2>'])
