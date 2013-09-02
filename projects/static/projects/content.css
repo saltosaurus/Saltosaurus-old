@@ -10,7 +10,7 @@
 
 #content ul a {
 	text-decoration: none;
-	color: #41537E;
+	color: #353984;
 }
 
 #content ul a:hover {
@@ -27,7 +27,7 @@
 	color: #41537E;
 }
 
-#content h3 {
+#content h2 {
 	font-size: small;
 	color: #A9A9A9;
 }
@@ -50,25 +50,4 @@
 	padding: .5em .25em 0 .25em;
 }
 
-#comments hr {
-	margin: 1em 0 1em 0;
-}
-
-#comments h2 {
-	
-}
-
-#comments h3 {
-	font-size: medium;
-	color: #555555;
-}
-
-#comments h4 {
-	font-size: small;
-	color: #A9A9A9;
-}
-
-#comments form {
-	margin: 1em;
-}
 

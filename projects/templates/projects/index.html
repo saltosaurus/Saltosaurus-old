@@ -1,24 +1,68 @@
 {% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static 'projects/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'projects/page.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'projects/content.css' %}" />
 
-{% if latest_project_list %}
-	<ul>
-	{% for project in latest_project_list %}
-		<li><a href="{% url 'projects:project' project.id %}">{{project.name}}</a>
-			{% if milestone_list %}
-				<ul>
-				{% for milestone in milestone_list %}
-					{% if milestone.project == project %}
-						<li><a href="{% url 'projects:milestone' project.id milestone.id %}">{{milestone.name}}</a></li>
-					{% endif %}
-				{% endfor %}
-				</ul>
-			{% else %}
-				<p>No current milestones for this project.</p>
-			{% endif %}
-		</li>
-	{% endfor %}
-	</ul>
-{% else %}
-	<p>No projects are available.</p>
-{% endif %}
+<div id="page">
+	<section id="title">
+		<header>
+			<h1>Insert Witty Title</h1>
+			<h2>Where Brian Salter dumps the byproducts of his creativity...</h2>
+		</header>
+	</section>
+
+	<nav>
+		<ul>
+			<li><a href="{% url 'home:index' %}">Home</a></li>
+			<li>Projects</li>
+			<li><a href="{% url 'articles:index' %}">Articles</a></li>
+		</ul>
+	</nav>
+
+	<section id="content">
+		{% if latest_project_list %}
+			<ul>
+			{% for project in latest_project_list %}
+				<li>
+				{% if project.url %}
+					<h1><a href="{{project.url}}">{{project.name}}</a></h1>
+				{% else %}
+					<h1>{{project.name}}</h1>
+				{% endif %}
+				{% if project.is_completed %}
+					<h2>Completed: {{project.end_date}}</h2>
+				{% else %}
+					<h2>Estimated completion date: {{project.end_date}}</h2>
+				{% endif %}
+				<hr>
+				<p>{{project.description}}</p>
+				</li>
+			{% endfor %}
+			</ul>
+		{% else %}
+			<h1>No projects are available.</h1>
+		{% endif %}
+	</section>
+	
+	<footer>
+		<div id="copyright">
+			© 2013 Brian Salter
+		</div>
+		<div id="social">
+			<a href="https://www.facebook.com/AuthorBrianSalter">
+				<img src="{% static "home/images/facebook-64.png" %}" alt="Facebook" width="64" height="64">
+			</a>
+			<a href="https://twitter.com/salterbw">
+				<img src="{% static "home/images/twitter-64.png" %}" alt="Twitter" width="64" height="64">
+			</a>
+			<a href="https://github.com/salterbw">
+				<img src="{% static "home/images/github-64.png" %}" alt="Github" width="64" height="64">
+			</a>
+			<a href="http://www.linkedin.com/in/briansalter/">
+				<img src="{% static "home/images/linkedin-64.png" %}" alt="LinkedIn" width="64" height="64">
+			</a>
+			<a href="http://www.reddit.com/user/BrianSalter/">
+				<img src="{% static "home/images/reddit-64.png" %}" alt="Reddit" width="64" height="64">
+			</a>
+		</div>
+	</footer>
+</div>

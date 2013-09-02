@@ -1,5 +1,55 @@
 {% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static 'projects/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'projects/page.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'projects/content.css' %}" />
 
-<h1>{{project.name}}</h1>
-<h4>{{project.description}}</h4>
+<div id="page">
+	<section id="title">
+		<header>
+			<h1>Insert Witty Title</h1>
+			<h2>Where Brian Salter dumps the byproducts of his creativity...</h2>
+		</header>
+	</section>
+
+	<nav>
+		<ul>
+			<li><a href="{% url 'home:index' %}">Home</a></li>
+			<li><a href="{% url 'projects:index' %}">Projects</a></li>
+			<li><a href="{% url 'articles:index' %}">Articles</a></li>
+		</ul>
+	</nav>
+
+	<section id="content">
+		{% if latest_project_list %}
+			<ul>
+			{% for project in latest_project_list %}
+				<li><a href="{% url 'projects:project' project.id %}">{{project.name}}</a></li>
+			{% endfor %}
+			</ul>
+		{% else %}
+			<p>No projects are available.</p>
+		{% endif %}
+	</section>
+	
+	<footer>
+		<div id="copyright">
+			© 2013 Brian Salter
+		</div>
+		<div id="social">
+			<a href="https://www.facebook.com/AuthorBrianSalter">
+				<img src="{% static "home/images/facebook-64.png" %}" alt="Facebook" width="64" height="64">
+			</a>
+			<a href="https://twitter.com/salterbw">
+				<img src="{% static "home/images/twitter-64.png" %}" alt="Twitter" width="64" height="64">
+			</a>
+			<a href="https://github.com/salterbw">
+				<img src="{% static "home/images/github-64.png" %}" alt="Github" width="64" height="64">
+			</a>
+			<a href="http://www.linkedin.com/in/briansalter/">
+				<img src="{% static "home/images/linkedin-64.png" %}" alt="LinkedIn" width="64" height="64">
+			</a>
+			<a href="http://www.reddit.com/user/BrianSalter/">
+				<img src="{% static "home/images/reddit-64.png" %}" alt="Reddit" width="64" height="64">
+			</a>
+		</div>
+	</footer>
+</div>
