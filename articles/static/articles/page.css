@@ -28,7 +28,7 @@ body {
 /* Div block in which all content for the page is placed so it's centered on the page. */
 #page {
 	width: 80%;
-	min-width: 800px;
+	min-width: 900px;
 	max-width: 1200px;
 	height: auto;
 	margin: 50px auto;
@@ -49,12 +49,20 @@ body {
 	padding: 1.5em 1em 1.5em 2em;
 }
 
+#title header {
+	float: left;
+}
+
 #title h1 {
 	font-size: 3em;
 }
 
 #title h2 {
 	font-size: 1em;
+}
+
+#ad {
+	float: right;
 }
 
 /* CSS for the navigation bar and links contained within. */
