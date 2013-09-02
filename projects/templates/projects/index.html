@@ -61,7 +61,7 @@
 					<h2>Estimated completion date: {{project.end_date}}</h2>
 				{% endif %}
 				<hr>
-				<p>{{project.description}}</p>
+				<p>{{project.description|safe|linebreaks}}</p>
 				</li>
 			{% endfor %}
 			</ul>
