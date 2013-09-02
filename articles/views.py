@@ -7,11 +7,11 @@ from articles.models import Article, Comment
 
 def index(request):
     latest_article_list = Article.objects.order_by('-pub_date')[:10]
-#     comments_list = Comment.objects.order_by('-id')
+    comments_list = Comment.objects.order_by('-id')
     
     context = {
                'latest_article_list': latest_article_list,
-#                'comments_list': comments_list,     
+               'comments_list': comments_list,     
                }
     return render(request, 'articles/index.html', context)
 

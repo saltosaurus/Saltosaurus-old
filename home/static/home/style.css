@@ -116,11 +116,29 @@ footer {
 
 #copyright {
 	float: left;
-	text-align: center;
+	text-align: left;
 	vertical-align: middle;
 	line-height: 64px;
+	width: 20%;
+}
+
+#about {
+	float: left;
+	width: 35%;
+	text-align: center;
+	font-size: small;
 }
 
 #social {
 	float: right;
+	width: 45%
+	text-align: right;
+}
+
+#social ul {
+	list-style: none;
+}
+
+#social li {
+	display: inline;
 }

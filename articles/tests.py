@@ -168,7 +168,7 @@ class BlogViewTests(TestCase):
         self.assertContains(response, "title 2")
         self.assertEqual(response.context['article'], article)
         self.assertQuerysetEqual(response.context['comments_list'], 
-                                 ['<Comment: title 0>', '<Comment: title 1>', '<Comment: title 2>'])
+                                 ['<Comment: title 2>', '<Comment: title 1>', '<Comment: title 0>'])
         
         
     ## articles/comment tests
