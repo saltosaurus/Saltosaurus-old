@@ -1,27 +1,61 @@
 {% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}" />
+{% load articles_extras %}
+<link rel="stylesheet" type="text/css" href="{% static 'articles/page.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'articles/content.css' %}" />
 
-<h1>My ramblings...</h1>
+<div id="page">
+	<section id="title">
+		<header>
+			<h1>Insert Witty Title</h1>
+			<h2>Where Brian Salter dumps the byproducts of his creativity...</h2>
+		</header>
+	</section>
 
-{% if latest_article_list %}
-	<ul>
-	{% for article in latest_article_list %}
-		<h3>{{article.title}}</h3>
-		<p>{{article.contents}}</p>
-		{% if comments_list %}
+	<nav>
+		<ul>
+			<li><a href="{% url 'home:index' %}">Home</a></li>
+			<li><a href="{% url 'projects:index' %}">Projects</a></li>
+			<li>Articles</li>
+		</ul>
+	</nav>
+
+	<section id="content">
+		{% if latest_article_list %}
 			<ul>
-			{% for comment in comments_list %}
-				{% if comment.article == entry %}
-					<li><a href="{% url 'articles:comment' article.id comment.id %}">{{comment.contents}}</a></li>
-				{% endif %}
+			{% for article in latest_article_list %}
+				<li>
+				<h2><a href="{% url 'articles:article' article.id %}">{{article.title}}</a></h2>
+				<h3>Written {{ article.pub_date }} by Brian.</h3>
+				<hr>
+				<p>{{article.contents}}</p>
+				</li>
 			{% endfor %}
 			</ul>
 		{% else %}
-			<p>No current comments for this entry.</p>
+			<p>No articles are available.</p>
 		{% endif %}
-	{% endfor %}
-	</ul>
-{% else %}
-	<p>No articles are available.</p>
-{% endif %}
-
+	</section>
+	
+	<footer>
+		<div id="copyright">
+			© 2013 Brian Salter
+		</div>
+		<div id="social">
+			<a href="https://www.facebook.com/AuthorBrianSalter">
+				<img src="{% static "home/images/facebook-64.png" %}" alt="Facebook" width="64" height="64">
+			</a>
+			<a href="https://twitter.com/salterbw">
+				<img src="{% static "home/images/twitter-64.png" %}" alt="Twitter" width="64" height="64">
+			</a>
+			<a href="https://github.com/salterbw">
+				<img src="{% static "home/images/github-64.png" %}" alt="Github" width="64" height="64">
+			</a>
+			<a href="http://www.linkedin.com/in/briansalter/">
+				<img src="{% static "home/images/linkedin-64.png" %}" alt="LinkedIn" width="64" height="64">
+			</a>
+			<a href="http://www.reddit.com/user/BrianSalter/">
+				<img src="{% static "home/images/reddit-64.png" %}" alt="Reddit" width="64" height="64">
+			</a>
+		</div>
+	</footer>
+</div>

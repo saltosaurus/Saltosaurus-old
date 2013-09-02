@@ -7,17 +7,17 @@ from articles.models import Article, Comment
 
 def index(request):
     latest_article_list = Article.objects.order_by('-pub_date')[:10]
-    comments_list = Comment.objects.order_by('-id') # Linear search is gross
+    comments_list = Comment.objects.order_by('-id')
     
     context = {
                'latest_article_list': latest_article_list,
-               'comments_list': comments_list,        
+               'comments_list': comments_list,     
                }
     return render(request, 'articles/index.html', context)
 
 def article(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
-    latest_comment_list = Comment.objects.order_by('id')[:5]
+    latest_comment_list = Comment.objects.order_by('-id').filter(article=article)[:5]
     
     context = {
                'comments_list': latest_comment_list,
