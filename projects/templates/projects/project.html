@@ -3,10 +3,3 @@
 
 <h1>{{project.name}}</h1>
 <h4>{{project.description}}</h4>
-{% if milestone_list %}
-	<ul>
-	{% for milestone in milestone_list %}
-		<li><a href="{% url 'projects:milestone' project.id milestone.id %}">{{milestone.name}}</a></li>
-	{% endfor %}
-	</ul>
-{% endif %}
