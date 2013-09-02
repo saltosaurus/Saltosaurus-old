@@ -1,0 +1,17 @@
+/* Main content CSS. */
+#content {
+	height: 800px;
+	width: 100%;
+}
+
+#articles {
+	width: 70%;
+	height: 100%;
+	float: left;
+}
+
+#twitter {
+	float: right;
+	height: 100%;
+	width: 30%;
+}
