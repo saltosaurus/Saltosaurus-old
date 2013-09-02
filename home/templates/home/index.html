@@ -1,37 +1,84 @@
 {% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}" />
+<link href='http://fonts.googleapis.com/css?family=Rosario' rel='stylesheet' type='text/css'>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script>
+	$(function() {
+		$("#accordion").accordion({ heightStyle: "fill", collapsible: true, active: false });
+	});
+</script>
 
-Latest blog entries:
-{% if latest_article_list %}
-	<ul>
-	{% for entry in latest_article_list %}
-		<li><a href="/articles/{{entry.id}}/">{{entry.title}}</a>
-			{% if comments_list %}
-				<ul>
-				{% for comment in comments_list %}
-					{% if comment.blogentry == entry %}
-						<li><a href="/articles/{{entry.id}}/{{comment.id}}/">{{comment.contents}}</a></li>
-					{% endif %}
+<div id="page">
+	<section id="title">
+		<header>
+			<h1>Insert Witty Title</h1>
+			<h2>Where Brian Salter dumps the byproducts of his creativity...</h2>
+		</header>
+	</section>
+
+	<nav>
+		<ul>
+			<li>Home</li>
+			<li><a href="{% url 'projects:index' %}">Projects</a></li>
+			<li><a href="{% url 'articles:index' %}">Articles</a></li>
+		</ul>
+	</nav>
+
+	<section id="content">
+		<section id="articles">
+			<header>
+				<h3>Latest articles:</h3>
+			</header>
+		
+			{% if latest_article_list %}
+				<div id="accordion">
+				{% for article in latest_article_list %}
+					<h3>{{article.title}}</h3>
+					<div>{{article.contents}}</div>
 				{% endfor %}
-				</ul>
+				</div>
 			{% else %}
-				<p>No current comments for this article.</p>
+				<p><h4>No articles are available.</h4></p>
 			{% endif %}
-		</li>
-	{% endfor %}
-	</ul>
-{% else %}
-	<p>No articles are available.</p>
-{% endif %}
-
-
-Projects with deadlines on the horizon:
-{% if latest_project_list %}
-	<ul>
-	{% for project in latest_project_list %}
-		<li><a href="/projects/{{project.id}}/">{{project.name}}</a></li>
-	{% endfor %}
-	</ul>
-{% else %}
-	<p>No projects looming...</p>
-{% endif %}
+		
+		</section>
+		
+		<div id="twitter">
+			<a class="twitter-timeline"  
+				href="https://twitter.com/salterbw"  
+				data-widget-id="331566646533685249">
+				Tweets by @salterbw
+			</a>
+				
+			<script>
+			!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+			</script>
+			
+		</div>
+	</section>
+	
+	<footer>
+		<div id="copyright">
+			© 2013 Brian Salter
+		</div>
+		<div id="social">
+			<a href="https://www.facebook.com/AuthorBrianSalter">
+				<img src="{% static "home/images/facebook-64.png" %}" alt="Facebook" width="64" height="64">
+			</a>
+			<a href="https://twitter.com/salterbw">
+				<img src="{% static "home/images/twitter-64.png" %}" alt="Twitter" width="64" height="64">
+			</a>
+			<a href="https://github.com/salterbw">
+				<img src="{% static "home/images/github-64.png" %}" alt="Github" width="64" height="64">
+			</a>
+			<a href="http://www.linkedin.com/in/briansalter/">
+				<img src="{% static "home/images/linkedin-64.png" %}" alt="LinkedIn" width="64" height="64">
+			</a>
+			<a href="http://www.reddit.com/user/BrianSalter/">
+				<img src="{% static "home/images/reddit-64.png" %}" alt="Reddit" width="64" height="64">
+			</a>
+		</div>
+	</footer>
+</div>
