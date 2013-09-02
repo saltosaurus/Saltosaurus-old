@@ -49,7 +49,7 @@
 	
 	<section id="content">
 		<h1>{{ article.title }}</h1>
-		<p id="article">{{ article.contents }}</p>
+		<p id="article">{{ article.contents|safe|linebreaks }}</p>
 		<section id="comments">
 			<hr>
 			{% if comments_list %}

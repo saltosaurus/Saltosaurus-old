@@ -54,7 +54,7 @@
 				<h2><a href="{% url 'articles:article' article.id %}">{{article.title}}</a></h2>
 				<h3>Written {{ article.pub_date }} by Brian.</h3>
 				<hr>
-				<p>{{article.contents}}</p>
+				<p>{{ article.contents|safe|linebreaks }}</p>
 				</li>
 			{% endfor %}
 			</ul>

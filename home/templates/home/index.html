@@ -64,7 +64,7 @@
 				<div id="accordion">
 				{% for article in latest_article_list %}
 					<h3>{{article.title}}</h3>
-					<div>{{article.contents}}</div>
+					<div>{{ article.contents|safe|linebreaks }}</div>
 				{% endfor %}
 				</div>
 			{% else %}
