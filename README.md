@@ -1,7 +1,7 @@
 WittyURL
 ========
 
-A website overhaul for witty-url.com.  Current apps:
+A Django-based website for saltosaur.us.  Current apps:
 
 ========
 
