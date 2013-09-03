@@ -1,5 +1,5 @@
 from django.contrib import admin
-from projects.models import Project, Milestone
+from projects.models import Project
 
 class ProjectAdmin(admin.ModelAdmin):
     fieldsets = [
@@ -22,4 +22,4 @@ class MilestoneAdmin(admin.ModelAdmin):
     date_hierarchy = 'accomplish_date'
 
 admin.site.register(Project, ProjectAdmin)
-admin.site.register(Milestone, MilestoneAdmin)
+# admin.site.register(Milestone, MilestoneAdmin)

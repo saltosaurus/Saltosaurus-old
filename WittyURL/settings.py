@@ -111,6 +111,7 @@ TEMPLATE_DIRS = (
     '/home/bsalter/workspace/WittyURL/projects/templates',
     '/home/bsalter/workspace/WittyURL/articles/templates',
     '/home/bsalter/workspace/WittyURL/home/templates'
+    '/home/bsalter/workspace/WittyURL/FAQ/templates'
 )
 
 INSTALLED_APPS = (
@@ -124,6 +125,7 @@ INSTALLED_APPS = (
     'projects',
     'articles',
     'home',
+    'FAQ',
 )
 
 # A sample logging configuration. The only tangible logging

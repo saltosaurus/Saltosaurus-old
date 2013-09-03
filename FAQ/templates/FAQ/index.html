@@ -1,6 +1,7 @@
 {% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static 'projects/page.css' %}" />
-<link rel="stylesheet" type="text/css" href="{% static 'projects/content.css' %}" />
+{% load articles_extras %}
+<link rel="stylesheet" type="text/css" href="{% static 'FAQ/page.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'FAQ/content.css' %}" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -39,36 +40,23 @@
 
 	<nav>
 		<ul>
-			<li>Home</li>
+			<li><a href="{% url 'home:index' %}">Home</a></li>
 			<li><a href="{% url 'projects:index' %}">Projects</a></li>
 			<li><a href="{% url 'articles:index' %}">Articles</a></li>
-			<li><a href="{% url 'FAQ:index' %}">FAQ</a></li>
+			<li>FAQ</li>
 		</ul>
 	</nav>
 
 	<section id="content">
-		{% if latest_project_list %}
-			<ul>
-			{% for project in latest_project_list %}
-				<li>
-				{% if project.url %}
-					<h1><a href="{{project.url}}">{{project.name}}</a></h1>
-				{% else %}
-					<h1>{{project.name}}</h1>
-				{% endif %}
-				{% if project.is_completed %}
-					<h2>Completed: {{project.end_date}}</h2>
-				{% else %}
-					<h2>Estimated completion date: {{project.end_date}}</h2>
-				{% endif %}
-				<hr>
-				<p>{{project.description|safe|linebreaks}}</p>
-				</li>
-			{% endfor %}
-			</ul>
-		{% else %}
-			<h1>No projects are available.</h1>
-		{% endif %}
+		<ul>
+		{% for query in query_list %}
+			<li>
+			<h1>{{ query.question }}</h1>
+			<hr>
+			<p>{{ query.answer|safe|linebreaks }}</p>
+			</li>
+		{% endfor %}
+		</ul>
 	</section>
 	
 	<footer>
@@ -83,19 +71,19 @@
 		<div id="social">
 			<ul>
 				<li>
-					<a href="https://www.facebook.com/AuthorBrianSalter"><img src="{% static "home/images/facebook-64.png" %}" alt="Facebook" width="64" height="64" border="0"></a>
+					<a href="https://www.facebook.com/AuthorBrianSalter"><img src="{% static "FAQ/images/facebook-64.png" %}" alt="Facebook" width="64" height="64" border="0"></a>
 				</li>
 				<li>
-					<a href="https://twitter.com/salterbw"><img src="{% static "home/images/twitter-64.png" %}" alt="Twitter" width="64" height="64" border="0"></a>
+					<a href="https://twitter.com/salterbw"><img src="{% static "FAQ/images/twitter-64.png" %}" alt="Twitter" width="64" height="64" border="0"></a>
 				</li>
 				<li>
-					<a href="https://github.com/salterbw"><img src="{% static "home/images/github-64.png" %}" alt="Github" width="64" height="64" border="0"></a>
+					<a href="https://github.com/salterbw"><img src="{% static "FAQ/images/github-64.png" %}" alt="Github" width="64" height="64" border="0"></a>
 				</li>
 				<li>
-					<a href="http://www.linkedin.com/in/briansalter/"><img src="{% static "home/images/linkedin-64.png" %}" alt="LinkedIn" width="64" height="64" border="0"></a>
+					<a href="http://www.linkedin.com/in/briansalter/"><img src="{% static "FAQ/images/linkedin-64.png" %}" alt="LinkedIn" width="64" height="64" border="0"></a>
 				</li>
 				<li>
-					<a href="http://www.reddit.com/user/BrianSalter/"><img src="{% static "home/images/reddit-64.png" %}" alt="Reddit" width="64" height="64" border="0"></a>
+					<a href="http://www.reddit.com/user/BrianSalter/"><img src="{% static "FAQ/images/reddit-64.png" %}" alt="Reddit" width="64" height="64" border="0"></a>
 				</li>
 			</ul>
 		</div>

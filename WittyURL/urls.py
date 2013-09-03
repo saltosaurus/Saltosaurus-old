@@ -7,6 +7,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^projects', include('projects.urls', namespace="projects")),
     url(r'^articles', include('articles.urls', namespace="articles")),
+    url(r'^FAQ', include('FAQ.urls', namespace="FAQ")),
     # ex: witty-url.com/
     url(r'^/?$', include('home.urls', namespace="home")),
     # ex: witty-url.com/index.html
