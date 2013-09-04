@@ -1,10 +1,10 @@
-# Django settings for WittyURL project.
+# Django settings for saltosaurus project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Brian Salter', 'brian.salter@witty-url.com')
+    ('Brian Salter', 'brian@saltosaur.us')
 )
 
 MANAGERS = ADMINS
@@ -12,7 +12,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/home/bsalter/workspace/WittyURL/sqlite.db',                      # Or path to database file if using sqlite3.
+        'NAME': '/home/bsalter/workspace/saltosaurus/sqlite.db',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
@@ -23,7 +23,7 @@ DATABASES = {
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = [ '.witty-url.com' ]
+ALLOWED_HOSTS = [ '.saltosaur.us' ]
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -63,7 +63,7 @@ MEDIA_URL = ''
 # Example: "/var/www/example.com/static/"
 STATIC_ROOT = ''
 
-# URL prefix for static files.
+# URL prefix for static files.saltosaurus
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
 
@@ -102,16 +102,16 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'WittyURL.urls'
+ROOT_URLCONF = 'saltosaurus.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'WittyURL.wsgi.application'
+WSGI_APPLICATION = 'saltosaurus.wsgi.application'
 
 TEMPLATE_DIRS = (
-    '/home/bsalter/workspace/WittyURL/projects/templates',
-    '/home/bsalter/workspace/WittyURL/articles/templates',
-    '/home/bsalter/workspace/WittyURL/home/templates'
-    '/home/bsalter/workspace/WittyURL/FAQ/templates'
+    '/home/bsalter/workspace/saltosaurus/projects/templates',
+    '/home/bsalter/workspace/saltosaurus/articles/templates',
+    '/home/bsalter/workspace/saltosaurus/home/templates'
+    '/home/bsalter/workspace/saltosaurus/saltosaurusFAQ/templates'
 )
 
 INSTALLED_APPS = (
