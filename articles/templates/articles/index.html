@@ -52,6 +52,15 @@
 				<h3>Written {{ article.pub_date }} by Brian.</h3>
 				<hr>
 				<p>{{ article.contents|safe|linebreaks }}</p>
+				<a href="#" 
+				  onclick="
+				    window.open(
+				      'https://www.facebook.com/sharer/sharer.php?u='+{% url 'articles:article' article.id %}, 
+				      'facebook-share-dialog', 
+				      'width=626,height=436'); 
+				    return false;">
+				  Share on Facebook
+				</a>
 				</li>
 			{% endfor %}
 			</ul>
