@@ -42,15 +42,20 @@
 			<ul>
 			{% for article in latest_article_list %}
 				<li>
-				<h2><a href="{% url 'articles:article' article.id %}">{{article.title}}</a></h2>
-				<h3>Written {{ article.pub_date }} by Brian.</h3>
-				<hr>
-				<p>{{ article.contents|safe|linebreaks }}</p>
-				<ul id="share">
-					<li><div class="fb-like" data-href="http://saltosaur.us{% url 'articles:article' article.id %}" data-width="450" data-layout="button_count" data-action="recommend" data-show-faces="false" data-send="false"></div></li>
-					<li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://saltosaur.us{% url 'articles:article' article.id %}" data-text="{{ article.title }}" data-via="saltosaurus">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
-				</ul>
+					<h2><a href="{% url 'articles:article' article.id %}">{{article.title}}</a></h2>
+					<h3>Written {{ article.pub_date }} by Brian.</h3>
+					<hr>
+					<p>{{ article.contents|safe|linebreaks|truncatewords_html:300 }}</p>
+					<ul id="share">
+						<li><script type="text/javascript">
+							reddit_url = "http://saltosaur.us{% url 'articles:article' article.id %}";
+							reddit_title = "{{article.title}}";
+							</script>
+							<script type="text/javascript" src="http://www.reddit.com/static/button/button1.js"></script></li>
+						<li><div class="fb-like" data-href="http://saltosaur.us{% url 'articles:article' article.id %}" data-width="450" data-layout="button_count" data-action="recommend" data-show-faces="false" data-send="false"></div></li>
+						<li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://saltosaur.us{% url 'articles:article' article.id %}" data-text="{{ article.title }}" data-via="saltosaurus">Tweet</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
+					</ul>
 				</li>
 			{% endfor %}
 			</ul>

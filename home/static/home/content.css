@@ -15,3 +15,7 @@
 	height: 100%;
 	width: 30%;
 }
+
+#share li {
+	display: inline;
+}
