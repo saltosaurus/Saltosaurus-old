@@ -45,7 +45,7 @@
 			{% if latest_article_list %}
 				{% for article in latest_article_list %}
 					<h1><a href="{% url 'articles:article' article.id %}">{{article.title}}</a></h1>
-					{{ article.contents|safe|linebreaks|truncatewords_html:180 }}
+					{{ article.contents|safe|linebreaks|truncatewords_html:200 }}
 					<ul id="share">
 						<li><script type="text/javascript">
 							reddit_url = "http://saltosaur.us{% url 'articles:article' article.id %}";
