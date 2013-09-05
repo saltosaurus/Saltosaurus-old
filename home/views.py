@@ -4,7 +4,7 @@ from articles.models import Article, Comment
 from projects.models import Project
 
 def index(request):
-    latest_article_list = Article.objects.order_by('-pub_date')[:5]
+    latest_article_list = Article.objects.order_by('-pub_date')[:3]
     comments_list = Comment.objects.order_by('id') # Linear search is gross
     latest_project_list = Project.objects.order_by('is_completed','end_date')[:5]
     

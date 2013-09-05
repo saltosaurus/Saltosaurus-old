@@ -45,7 +45,7 @@
 					<h2><a href="{% url 'articles:article' article.id %}">{{article.title}}</a></h2>
 					<h3>Written {{ article.pub_date }} by Brian.</h3>
 					<hr>
-					<p>{{ article.contents|safe|linebreaks|truncatewords_html:300 }}</p>
+					{{ article.contents|safe|linebreaks|truncatewords_html:300 }}
 					<ul id="share">
 						<li><script type="text/javascript">
 							reddit_url = "http://saltosaur.us{% url 'articles:article' article.id %}";

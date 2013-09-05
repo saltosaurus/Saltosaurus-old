@@ -2,24 +2,10 @@
 <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="{% static 'home/page.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'home/content.css' %}" />
+<script type="text/javascript" src="{% static 'home/script.js' %}" ></script>
 <link href='http://fonts.googleapis.com/css?family=Rosario' rel='stylesheet' type='text/css'>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-<script>
-	$(function() {
-		$("#accordion").accordion({ heightStyle: "fill", collapsible: true, active: false });
-	});
-</script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-43642332-1', 'saltosaur.us');
-  ga('send', 'pageview');
-
-</script>
 
 <title>The Saltosaurus Speaks</title>
 <meta name="description" content="Where Brian Salter dumps the byproducts of his creativity...">
@@ -55,16 +41,11 @@
 	</nav>
 
 	<section id="content">
-		<section id="articles">
-			<header>
-				<h3>Latest articles:</h3>
-			</header>
-		
+		<div id="articles">
 			{% if latest_article_list %}
-				<div id="accordion">
 				{% for article in latest_article_list %}
-					<h3>{{article.title}}</h3>
-					<div>{{ article.contents|safe|linebreaks }}
+					<h1><a href="{% url 'articles:article' article.id %}">{{article.title}}</a></h1>
+					{{ article.contents|safe|linebreaks|truncatewords_html:180 }}
 					<ul id="share">
 						<li><script type="text/javascript">
 							reddit_url = "http://saltosaur.us{% url 'articles:article' article.id %}";
@@ -75,14 +56,11 @@
 						<li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://saltosaur.us{% url 'articles:article' article.id %}" data-text="{{ article.title }}" data-via="saltosaurus">Tweet</a>
 							<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
 					</ul>
-					</div>
 				{% endfor %}
-				</div>
 			{% else %}
-				<p><h4>No articles are available.</h4></p>
+				<h4>No articles are available.</h4>
 			{% endif %}
-		
-		</section>
+		</div>
 		
 		<div id="twitter">
 			<a class="twitter-timeline"  
