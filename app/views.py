@@ -23,7 +23,7 @@ def articles():
 @app.route('/articles/<int:article_id>')
 def article(article_id):
     article = Article.query.get_or_404(article_id)
-    comments_list = Comment.query.order_by(Comment.id).filter(article=article)[:5]
+    comments_list = Comment.query.order_by(Comment.id).filter_by(id=article_id)[:5]
     
     return render_template('article.html', article=article, comments_list=comments_list)
 

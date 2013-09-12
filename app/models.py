@@ -9,13 +9,18 @@ class Article(db.Model):
     pub_date = db.Column(db.DateTime)
     comments = db.relationship('Comment', backref = 'article', lazy = 'dynamic')
     
+    def __init__(self, title, contents):
+        self.title = title
+        self.contents = contents
+        self.pub_date = datetime.now()
+    
     # Make sure if we view it as an object we get the article title
     def __repr__(self):
         return self.title
     
     # Checks if the article was written in the last week: returns True if it was
     def was_written_recently(self):
-        return self.pub_date >= datetime.datetime.now() - datetime.timedelta(days=7)
+        return self.pub_date >= datetime.now() - datetime.timedelta(days=7)
     
     
 
@@ -31,3 +36,8 @@ class Comment(db.Model):
     def __repr__(self):
         return self.author
     
+    def __init__(self, author, contents, article_id):
+        self.author = author
+        self.contents = contents
+        self.article_id = article_id
+        self.pub_date = datetime.now()
