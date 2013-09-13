@@ -36,3 +36,7 @@ def projects():
 @app.route('/faq.html')
 def faq():
     return render_template('faq.html')
+
+@app.route('/resume')
+def resume():
+    return render_template('resume.html')

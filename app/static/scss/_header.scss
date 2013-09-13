@@ -1,0 +1,71 @@
+$title-bg: #3B4778;
+$nav-bg: #3B4778;
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background-color: #E5E5E5;
+	text-align: center;
+}
+
+#page {
+	width: auto;
+	margin: 2em;
+}
+
+header {
+	display: inline-block;
+	text-align: center;
+	min-width: 600px;
+}
+
+.title {
+	font-family: 'Fredericka the Great', cursive;
+	background-color: $title-bg;
+	color: white;
+	height: 65px;
+	width: auto;
+	border-radius: 6px;
+	display: inline-block;
+	padding: 1em;
+	float: left;
+	h1 {
+		font-size: xx-large;
+	}
+	h2 {
+		font-size: large;
+	}
+}
+
+nav {
+	float: right;
+	font-family: 'Jura', sans-serif;
+	line-height: 100px;
+	margin: 1em;
+	ul {
+		list-style: none;
+		li {
+			display: inline;
+		}
+	}
+	a {
+		text-decoration: none;
+		color: white;
+		font-weight: bold;
+		&:hover {
+			color: black;
+			background-color: #828CB8;
+			
+		}
+	}
+}
+
+.nav-button {
+	background-color: $nav-bg;
+	padding: .5em;
+	margin: 0 .5em;
+	border-radius: 8px;
+}
