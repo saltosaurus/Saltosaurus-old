@@ -14,7 +14,8 @@ header {
   display: inline-block;
   min-width: 600px;
   max-width: 1100px;
-  width: 100%; }
+  width: 100%;
+  text-align: center; }
 
 .title {
   font-family: 'Fredericka the Great', cursive;
@@ -23,30 +24,33 @@ header {
   height: 65px;
   width: 600px;
   border-radius: 6px;
-  display: inline-block;
   padding: 1em; }
   @media screen and (min-width: 1280px) {
     .title {
-      float: left; } }
+      float: left;
+      display: inline-block; } }
   @media screen and (max-width: 1280px) {
     .title {
-      float: top; } }
+      display: block;
+      margin: 0 auto; } }
   .title h1 {
     font-size: xx-large; }
   .title h2 {
     font-size: large; }
 
 nav {
-  font-family: 'Jura', sans-serif; }
+  font-family: 'Jura', sans-serif;
+  width: 425px; }
   @media screen and (min-width: 1280px) {
     nav {
       float: right;
-      margin: 1em;
+      margin: 1em auto;
       line-height: 100px; } }
   @media screen and (max-width: 1280px) {
     nav {
-      float: bottom;
-      line-height: 50px; } }
+      line-height: 50px;
+      display: block;
+      margin: 0 auto; } }
   nav ul {
     list-style: none; }
     nav ul li {
@@ -81,7 +85,9 @@ nav {
   @media screen and (min-width: 1280px) {
     .index {
       float: left;
-      width: 60%; } }
+      width: 60%;
+      text-align: left;
+      margin-left: 16px; } }
   .index header {
     font-family: 'Fredericka the Great', cursive;
     background-color: #707EB8;
@@ -90,8 +96,9 @@ nav {
     border-radius: 15px; }
 
 .twitter {
-  width: 20%;
-  float: right; }
+  width: 30%;
+  float: right;
+  margin-right: 50px; }
   @media screen and (max-width: 1280px) {
     .twitter {
       display: none; } }

@@ -13,6 +13,8 @@
 	@media screen and (min-width: 1280px) {
 		float: left;
 		width: 60%;
+		text-align: left;
+		margin-left: 16px;
 	}
 	header {
 		font-family: 'Fredericka the Great', cursive;
@@ -24,8 +26,9 @@
 }
 
 .twitter {
-	width: 20%;
+	width: 30%;
 	float: right;
+	margin-right: 50px;
 	@media screen and (max-width: 1280px) {
 		display: none;
 	}
