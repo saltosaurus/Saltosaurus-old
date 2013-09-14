@@ -1,6 +1,7 @@
 @import "_misc.scss";
 $title-bg: #3B4778;
 $nav-bg: #3B4778;
+$social: grey;
 
 * {
 	padding: 0;
@@ -15,6 +16,7 @@ body {
 #page {
 	width: auto;
 	margin: 2em;
+	clear: both;
 }
 
 header {
@@ -30,7 +32,7 @@ header {
 	background-color: $title-bg;
 	color: white;
 	height: 65px;
-	width: 600px;
+	width: 630px;
 	border-radius: 6px;
 	padding: 1em;
 	@media screen and (min-width: 1280px) {
@@ -49,11 +51,30 @@ header {
 	}
 }
 
+.social {
+	list-style: none;
+	width: auto;
+	text-align: center;
+	vertical-align: text-bottom;
+	li {
+		line-height: 30px;
+		padding: 14px 1em 0 1em;
+		display: inline-block;
+	}
+	a {
+		text-decoration: none;
+		color: black;
+		&:hover {
+			color: $social;
+			@include transition(.25s);
+		}
+	}
+}
+
 nav {
 	@media screen and (min-width: 1280px) {
 		float: right;
-		margin: 1em auto;
-		line-height: 100px;
+		line-height: 50px;
 	}
 	@media screen and (max-width: 1280px) {
 		line-height: 50px;

@@ -8,7 +8,8 @@ body {
 
 #page {
   width: auto;
-  margin: 2em; }
+  margin: 2em;
+  clear: both; }
 
 header {
   display: inline-block;
@@ -22,7 +23,7 @@ header {
   background-color: #3b4778;
   color: white;
   height: 65px;
-  width: 600px;
+  width: 630px;
   border-radius: 6px;
   padding: 1em; }
   @media screen and (min-width: 1280px) {
@@ -38,14 +39,32 @@ header {
   .title h2 {
     font-size: large; }
 
+.social {
+  list-style: none;
+  width: auto;
+  text-align: center;
+  vertical-align: text-bottom; }
+  .social li {
+    line-height: 30px;
+    padding: 14px 1em 0 1em;
+    display: inline-block; }
+  .social a {
+    text-decoration: none;
+    color: black; }
+    .social a:hover {
+      color: grey;
+      -moz-transition: all 0.25s ease-in;
+      -webkit-transition: all 0.25s ease-in;
+      -o-transition: all 0.25s ease-in;
+      transition: all 0.25s ease-in; }
+
 nav {
   font-family: 'Jura', sans-serif;
   width: 425px; }
   @media screen and (min-width: 1280px) {
     nav {
       float: right;
-      margin: 1em auto;
-      line-height: 100px; } }
+      line-height: 50px; } }
   @media screen and (max-width: 1280px) {
     nav {
       line-height: 50px;
@@ -78,22 +97,38 @@ nav {
   min-width: 600px;
   max-width: 1100px;
   width: 100%;
-  height: 1000px; }
+  height: auto;
+  min-height: 800px; }
 
-.index {
-  display: inline-block; }
+.index, .articles, .article {
+  display: inline-block;
+  height: auto;
+  margin: .5em; }
   @media screen and (min-width: 1280px) {
-    .index {
+    .index, .articles, .article {
       float: left;
       width: 60%;
       text-align: left;
       margin-left: 16px; } }
-  .index header {
+  .index header, .articles header, .article header {
     font-family: 'Fredericka the Great', cursive;
     background-color: #707EB8;
     color: white;
     width: auto;
     border-radius: 15px; }
+  .index article, .articles article, .article article {
+    font-family: 'Jura', sans-serif;
+    padding: 0 1.25em 2.5em 1.25em; }
+    .index article h1, .articles article h1, .article article h1 {
+      font-size: 32px;
+      margin: .5em -1em;
+      width: 625px; }
+    .index article p, .articles article p, .article article p {
+      font-size: 14px;
+      line-height: 18px;
+      margin: 0 -.5em;
+      width: 580px;
+      height: auto; }
 
 .twitter {
   width: 30%;
@@ -103,28 +138,60 @@ nav {
     .twitter {
       display: none; } }
 
+.project, .FAQ {
+  font-family: 'Jura', sans-serif;
+  text-align: left;
+  display: inline-block;
+  height: auto;
+  list-style: none; }
+  @media screen and (max-width: 1280px) {
+    .project, .FAQ {
+      padding: 0 300px; } }
+  .project header, .FAQ header {
+    display: inline-block;
+    text-align: left;
+    margin: 0 1em; }
+    @media screen and (max-width: 1280px) {
+      .project header, .FAQ header {
+        width: 400px; } }
+    .project header h1, .FAQ header h1 {
+      display: inline-block;
+      width: auto; }
+    .project header .status, .FAQ header .status {
+      display: inline-block;
+      background-color: #5b939d;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      font-size: small;
+      padding: .25em;
+      width: auto;
+      height: auto; }
+  .project p, .FAQ p {
+    margin: 0 2em; }
+    @media screen and (max-width: 1280px) {
+      .project p, .FAQ p {
+        width: 440px; } }
+    @media screen and (min-width: 1280px) {
+      .project p, .FAQ p {
+        width: 600px; } }
+  .project li, .FAQ li {
+    padding: 1em 0;
+    margin: 1em 0; }
+
 footer {
   display: inline-block;
   text-align: center;
   min-width: 600px;
   max-width: 1100px;
   width: 100%;
+  min-width: 615px;
+  max-width: 900px;
   height: 40px; }
-  footer ul {
-    list-style: none;
-    float: right;
-    height: 40px; }
-    footer ul li {
-      vertical-align: middle;
-      display: inline-block; }
-  footer a {
-    text-decoration: none;
-    color: black; }
-    footer a:hover {
-      color: grey;
-      -moz-transition: all 0.25s ease-in;
-      -webkit-transition: all 0.25s ease-in;
-      -o-transition: all 0.25s ease-in;
-      transition: all 0.25s ease-in; }
   footer .copyright {
-    float: left; }
+    float: left;
+    vertical-align: middle;
+    line-height: 40px;
+    margin: auto;
+    font-size: small;
+    width: 30%; }
