@@ -15,9 +15,11 @@ def index():
 @app.route('/articles.html')
 def articles():
     latest_article_list = Article.query.order_by(Article.pub_date.desc()).all()
+    num_articles = latest_article_list.length()
+    latest_article_list = latest_article_list[:5]
     comments_list = Comment.query.order_by(Comment.id).all()
     
-    return render_template('articles.html', latest_article_list=latest_article_list, comments_list=comments_list)
+    return render_template('articles.html', latest_article_list=latest_article_list, comments_list=comments_list, num_articles=num_articles)
 
 @app.route('/articles/<int:article_id>')
 def article(article_id):
