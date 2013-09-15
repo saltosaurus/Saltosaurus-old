@@ -43,7 +43,7 @@
 						{% endif %}
 					</p>
 					<h3><span id="numComm">{{ comments_list|selectattr("article_id", "sameas", article.id)|list|length }}</span> comments have been left thus far.  <a href="" class="add-comment">Add your own?</a></h3>
-					<section class="comment">
+					<section class="newComment">
 						<form method="post">
 							<input type="hidden" name="article_id" value="{{ article.id }}">
 							Author: <input type="text" name="author">

@@ -2,6 +2,8 @@
 <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
 <link href="{{ url_for('static', filename='script.js') }}" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Fredericka+the+Great|Jura' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
 
 <div id="page">
 	<header>
@@ -19,7 +21,7 @@
 		
 		<nav>
 			<ul>
-				<li><a href="{{ url_for('index') }}" class="nav-button current">Home</a></li>
+				<li><a href="{{ url_for('index') }}" class="nav-button">Home</a></li>
 				<li><a href="{{ url_for('articles') }}" class="nav-button">Articles</a></li>
 				<li><a href="{{ url_for('projects') }}" class="nav-button">Projects</a></li>
 				<li><a href="{{ url_for('faq') }}" class="nav-button">FAQ</a></li>
@@ -33,12 +35,23 @@
 			<article>
 				<h1>{{ article.title }}</h1>
 				<p>{{ article.contents }}</p>
+				<hr style="margin: 1em 0;">
+				<span class="comments">
 				{% for comment in comments_list %}
 					<article class="comment">
 						<h1>{{ comment.author }}</h1>
 						<p>{{ comment.contents }}</p>
 					</article>
 				{% endfor %}
+				</span>
+				<section class="newComment" style="display: block;">
+					<form method="post">
+						<input type="hidden" name="article_id" value="{{ article.id }}">
+						Author: <input type="text" name="author">
+						<input type="submit" value="Submit Comment" id="newComment">
+						<textarea rows="4" cols="50" name="comment"></textarea>
+					</form>
+				</section>
 			</article>
 		</section>
 		
