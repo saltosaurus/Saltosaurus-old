@@ -42,11 +42,12 @@
 							<a href="{{ url_for('article', article_id=article.id) }}">Read More</a>
 						{% endif %}
 					</p>
-					<h3>{{ comments_list|selectattr("article_id", "sameas", article.id)|list|length }} comments have been left thus far.  <a href="" class="add-comment">Add your own?</a></h3>
+					<h3><span id="numComm">{{ comments_list|selectattr("article_id", "sameas", article.id)|list|length }}</span> comments have been left thus far.  <a href="" class="add-comment">Add your own?</a></h3>
 					<section class="comment">
-						<form name="newComment" action="stuff" method="post" onsubmit="return validateComment()">
+						<form method="post">
+							<input type="hidden" name="article_id" value="{{ article.id }}">
 							Author: <input type="text" name="author">
-							<input type="submit" value="Submit Comment">
+							<input type="submit" value="Submit Comment" id="newComment">
 							<textarea rows="4" cols="50" name="comment"></textarea>
 						</form>
 					</section>

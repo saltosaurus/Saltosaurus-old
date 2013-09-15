@@ -1,5 +1,5 @@
-from flask import render_template
-from app import app
+from flask import render_template, request
+from app import app, db
 from models import Article, Comment
 
 
@@ -40,3 +40,12 @@ def faq():
 def resume():
     return render_template('resume.html')
 
+@app.route('/newComment', methods=['POST'])
+def newComment():
+    articleID = request.form['article_id']
+    author = request.form['author']
+    contents = request.form['comment']
+    comment = Comment(author, contents, articleID)
+    db.session.add(comment)
+    db.session.commit()
+    return ""

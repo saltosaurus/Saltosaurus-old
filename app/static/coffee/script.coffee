@@ -6,10 +6,17 @@ jQuery(document).ready ->
 		comment.find("input[type=text], textarea").val("")
 		comment.slideDown()
 		
-validateComment = ->
-	x = document.forms["newComment"]["comment"].value
-	y = document.forms["newComment"]["author"].value
-	alert "Validation being called."
-	if x is null or x is "" or y is null or y is ""
-		alert "You've left at least one field empty."
-		false
+		comment.find("#newComment").click (e) ->
+			e.preventDefault()
+			$.ajax {
+				type: "POST"
+				url: "newComment"
+				data: $("form").serialize()
+				success: ->
+					comment.slideUp()
+					numCom = $("#numComm")
+					numCom.fadeOut( ->
+						numCom.text(parseInt(numCom.text()) + 1)
+						)
+					numCom.fadeIn()
+				}
