@@ -57,7 +57,7 @@
 			color: DarkSlateGrey;
 			&:hover {
 				color: LightSlateGrey;
-			}
+			} 
 		}
 	}
 	hr { 
@@ -132,6 +132,13 @@
 		background-color: #E6D7CA;
 		border-radius: 25px;
 		box-shadow: 1px 1px 2px $project-shadow;
+	}
+	a {
+		text-decoration: none;
+		color: DarkSlateGrey;
+		&:hover {
+			color: LightSlateGrey;
+		} 
 	}
 }
 

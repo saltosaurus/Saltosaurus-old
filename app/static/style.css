@@ -209,6 +209,11 @@ nav {
     background-color: #E6D7CA;
     border-radius: 25px;
     box-shadow: 1px 1px 2px lightslategrey; }
+  .project a, .FAQ a {
+    text-decoration: none;
+    color: DarkSlateGrey; }
+    .project a:hover, .FAQ a:hover {
+      color: LightSlateGrey; }
 
 .newComment {
   display: none; }
