@@ -40,7 +40,7 @@ def faq():
 
 @app.route('/resume')
 def resume():
-    return render_template('resume.html')
+    return render_template('resume.pdf')
 
 @app.route('/newComment', methods=['POST'])
 def newComment():
