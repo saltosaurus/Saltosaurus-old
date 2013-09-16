@@ -1,11 +1,13 @@
 jQuery(document).ready ->
 	$(".add-comment").click (e) ->
 		e.preventDefault()
-		$( this ).remove()
 		comment = $( this ).parent().parent().find(".newComment")
+		$( this ).remove()
+		console.log "Add a comment link has been removed from the DOM."
+		console.log comment
 		comment.find("input[type=text], textarea").val("")
 		comment.slideDown()
-		
+		console.log "Comment has been made viewable."
 		comment.find("#newComment").click (e) ->
 			e.preventDefault()
 			$.ajax {

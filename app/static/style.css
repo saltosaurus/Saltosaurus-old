@@ -40,25 +40,20 @@ header {
   .title h2 {
     font-size: large; }
 
-.social {
-  list-style: none;
-  width: auto;
-  text-align: center;
-  vertical-align: text-bottom; }
-  .social li {
-    line-height: 30px;
-    padding: 14px 1em 0 1em;
-    display: inline-block; }
-  .social a {
-    text-decoration: none;
-    color: darkslategrey;
-    -moz-transition: all 0.25s ease-in-out;
-    -webkit-transition: all 0.25s ease-in-out;
-    -o-transition: all 0.25s ease-in-out;
-    transition: all 0.25s ease-in-out; }
-    .social a:hover {
-      color: lightslategrey;
-      opacity: .7; }
+.social li {
+  height: 35px;
+  padding: 14px 1em 0 1em;
+  display: inline-block; }
+.social a {
+  text-decoration: none;
+  color: darkslategrey;
+  -moz-transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out; }
+  .social a:hover {
+    color: lightslategrey;
+    opacity: .7; }
 
 nav {
   font-family: 'Jura', sans-serif;

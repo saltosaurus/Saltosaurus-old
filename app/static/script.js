@@ -4,10 +4,13 @@
     $(".add-comment").click(function(e) {
       var comment;
       e.preventDefault();
-      $(this).remove();
       comment = $(this).parent().parent().find(".newComment");
+      $(this).remove();
+      console.log("Add a comment link has been removed from the DOM.");
+      console.log(comment);
       comment.find("input[type=text], textarea").val("");
       comment.slideDown();
+      console.log("Comment has been made viewable.");
       return comment.find("#newComment").click(function(e) {
         e.preventDefault();
         return $.ajax({
