@@ -103,7 +103,6 @@
 		}
 		.status {
 			display: inline-block;
-			background-color: $text-WIP;
 			vertical-align: middle;
 			float: right;
 			border-radius: 4px;
@@ -112,10 +111,19 @@
 			font-size: small;
 			padding: .25em;
 			margin: auto 1em;
+			&.WIP {
+				background-color: $text-WIP;
+			}
+			&.FIN {
+				background-color: $text-FIN;
+			}
+			&.ABND {
+				background-color: $text-ABND;
+			}
 		}
 	}
 	p {
-		margin: 0 2em;
+		margin: 1em 2em;
 		width: 600px;
 	}
 	li {

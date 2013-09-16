@@ -186,7 +186,6 @@ nav {
       width: auto; }
     .project header .status, .FAQ header .status {
       display: inline-block;
-      background-color: #5b939d;
       vertical-align: middle;
       float: right;
       border-radius: 4px;
@@ -195,8 +194,14 @@ nav {
       font-size: small;
       padding: .25em;
       margin: auto 1em; }
+      .project header .status.WIP, .FAQ header .status.WIP {
+        background-color: #5b939d; }
+      .project header .status.FIN, .FAQ header .status.FIN {
+        background-color: green; }
+      .project header .status.ABND, .FAQ header .status.ABND {
+        background-color: red; }
   .project p, .FAQ p {
-    margin: 0 2em;
+    margin: 1em 2em;
     width: 600px; }
   .project li, .FAQ li {
     padding: 1em 0;
