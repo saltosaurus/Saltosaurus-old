@@ -1,21 +1,5 @@
 @import "_misc.scss";
 
-* {
-	padding: 0;
-	margin: 0;
-}
-
-body {
-	background-color: $bg;
-	text-align: center;
-}
-
-#page {
-	width: auto;
-	margin: 2em;
-	clear: both;
-}
-
 header {
 	display: inline-block;
 	min-width: 600px;
@@ -25,7 +9,7 @@ header {
 }
 
 .title {
-	font-family: 'Fredericka the Great', cursive;
+	font-family: 'Kelly Slab', cursive;
 	background-color: $title-bg;
 	color: $title-text;
 	height: 65px;
@@ -75,7 +59,7 @@ nav {
 		float: none;
 		margin: 0 auto;
 	}
-	font-family: 'Jura', sans-serif;
+	font-family: 'Kelly Slab', cursive;
 	width: 425px;
 	line-height: 50px;
 	ul {

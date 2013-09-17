@@ -19,7 +19,7 @@ header {
   text-align: center; }
 
 .title {
-  font-family: 'Fredericka the Great', cursive;
+  font-family: 'Kelly Slab', cursive;
   background-color: #b19177;
   color: white;
   height: 65px;
@@ -56,7 +56,7 @@ header {
     opacity: .7; }
 
 nav {
-  font-family: 'Jura', sans-serif;
+  font-family: 'Kelly Slab', cursive;
   width: 425px;
   line-height: 50px; }
   @media screen and (min-width: 1200px) {
@@ -91,6 +91,19 @@ nav {
   margin: 0 .5em;
   border-radius: 8px; }
 
+* {
+  padding: 0;
+  margin: 0; }
+
+body {
+  background-color: #f0e9e3;
+  text-align: center; }
+
+#page {
+  width: auto;
+  margin: 2em;
+  clear: both; }
+
 .content {
   display: inline-block;
   min-width: 600px;
@@ -110,7 +123,7 @@ nav {
       text-align: left;
       margin-left: 16px; } }
   .index header, .articles header, .article header {
-    font-family: 'Fredericka the Great', cursive;
+    font-family: 'Kelly Slab', cursive;
     background-color: #C3A791;
     box-shadow: 0.5px 0.5px 1px grey;
     color: white;
@@ -217,6 +230,19 @@ nav {
 
 .newComment {
   display: none; }
+
+* {
+  padding: 0;
+  margin: 0; }
+
+body {
+  background-color: #f0e9e3;
+  text-align: center; }
+
+#page {
+  width: auto;
+  margin: 2em;
+  clear: both; }
 
 footer {
   display: inline-block;
