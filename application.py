@@ -52,9 +52,8 @@ class Comment(db.Model):
 @application.route('/index')
 @application.route('/index.html')
 def index():
-    #latest_article_list = Article.query.order_by(Article.pub_date.desc()).all()
-    return "Hello world!"
-#return render_template("index.html", latest_article_list=latest_article_list)
+    latest_article_list = Article.query.order_by(Article.pub_date.desc()).all()
+    return render_template("index.html", latest_article_list=latest_article_list)
 
 @application.route('/articles')
 @application.route('/articles.html')
