@@ -3,7 +3,7 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 application = Flask(__name__, static_folder='static')
-application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://saltosaurus:WnIh2rnmd@saltosaurus.codvopu4ldja.us-west-2.rds.amazonaws.com:3306/db'
+application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://ebroot:WnIh2rnmd@aaqb08441w3mtu.codvopu4ldja.us-west-2.rds.amazonaws.com:3306/ebdb'
 db = SQLAlchemy(application)
 
 application.debug=True
